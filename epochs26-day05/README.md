@@ -192,7 +192,7 @@ Three regression models were developed and compared to predict used car selling 
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Athulyakrishna K**
 
