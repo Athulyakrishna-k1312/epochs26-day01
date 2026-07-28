@@ -1,161 +1,173 @@
-# Customer Churn Prediction using Machine Learning
-
-## Participant Details
+# Customer Segmentation using K-Means Clustering
 
 **Name:** Athulyakrishna K
 **MUID:** *athulyakrishnak@mulearn*
 
----
+## 📌 Project Overview
 
-# Business Objective
+This project performs **Customer Segmentation** using the **K-Means Clustering** algorithm, an unsupervised machine learning technique. The objective is to group customers with similar characteristics based on their demographic and spending behavior.
 
-Customer churn is a major challenge for subscription-based businesses. Retaining existing customers is generally more cost-effective than acquiring new ones. The objective of this project is to develop machine learning models that can accurately predict whether a customer is likely to churn based on their demographic information, subscription details, and usage patterns. These predictions can help businesses take proactive measures to improve customer retention.
-
----
-
-# Dataset Overview
-
-* **Dataset Name:** Customer Churn Dataset
-* **Source:** Kaggle
-* **Problem Type:** Binary Classification
-* **Target Variable:** `Churn`
-
-The dataset contains customer-related information such as age, gender, subscription type, usage frequency, payment behavior, customer tenure, and total spending. The goal is to classify customers into two categories:
-
-* **0:** Customer will not churn
-* **1:** Customer is likely to churn
+The project also uses **Principal Component Analysis (PCA)** to reduce the dataset to two dimensions for visualization, making it easier to interpret the identified customer segments.
 
 ---
 
-# Features and Target Variable
+## 📂 Dataset
 
-## Input Features
+**Dataset:** Mall Customer Segmentation Dataset
 
-* CustomerID *(removed during preprocessing)*
-* Age
-* Gender
-* Tenure
-* Usage Frequency
-* Support Calls
-* Payment Delay
-* Subscription Type
-* Contract Length
-* Total Spend
-* Last Interaction
+### Features
 
-## Target Variable
-
-* **Churn**
+- CustomerID
+- Gender
+- Age
+- Annual Income (k$)
+- Spending Score (1–100)
 
 ---
 
-# Data Preprocessing Pipeline
+## 🛠️ Technologies Used
 
-The following preprocessing steps were performed:
-
-* Loaded separate training and testing datasets.
-* Checked dataset structure and data types.
-* Identified and removed missing values.
-* Encoded categorical variables using **LabelEncoder**.
-* Removed the **CustomerID** column as it is not useful for prediction.
-* Separated features and target variable.
-* Applied **StandardScaler** for Logistic Regression.
-* Used the provided training and testing datasets directly for model development and evaluation.
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn
 
 ---
 
-# Machine Learning Models Implemented
+## 📋 Project Workflow
 
-The following classification models were trained and evaluated:
+### 1. Data Loading
+- Loaded the Mall Customer Segmentation dataset using Pandas.
 
-1. Logistic Regression
-2. Decision Tree Classifier
-3. Random Forest Classifier
+### 2. Data Preprocessing
+- Checked dataset structure and statistics.
+- Verified that there were no missing values.
+- Removed the `CustomerID` column since it does not contribute to clustering.
+- Encoded the `Gender` column into numerical values.
+- Applied **StandardScaler** to standardize all features before clustering.
 
----
+### 3. Elbow Method
+- Used the Elbow Method to determine the optimal number of clusters.
+- The elbow point was observed at **k = 4**.
+- Therefore, the K-Means model was trained using **4 clusters**.
 
-# Evaluation Metrics
+### 4. K-Means Clustering
+- Trained the K-Means clustering model.
+- Assigned each customer to one of the four clusters.
+- Generated cluster profiles by calculating the average characteristics of each cluster.
 
-The models were evaluated using the following performance metrics:
-
-* Accuracy
-* Precision
-* Recall
-* F1-Score
-* Confusion Matrix
-* Classification Report
-
----
-
-# Model Performance Comparison
-
-| Model               |   Accuracy |  Precision |     Recall |   F1 Score |
-| ------------------- | ---------: | ---------: | ---------: | ---------: |
-| Logistic Regression | **0.6325** |     0.9764 | **0.3607** | **0.5268** |
-| Decision Tree       |     0.5838 | **0.9802** |     0.2717 |     0.4254 |
-| Random Forest       |     0.5837 |     0.9811 |     0.2711 |     0.4249 |
+### 5. Principal Component Analysis (PCA)
+- Reduced the dataset from multiple dimensions to two principal components.
+- Visualized the customer segments using a scatter plot.
+- Reported the variance explained by the principal components.
 
 ---
 
-# Best Model
+# 📊 Cluster Summary
 
-### Logistic Regression
+## Cluster 0 – Mature Average Spenders
 
-Logistic Regression achieved the best overall performance among the three models.
+**Characteristics**
+- Older customers
+- Moderate annual income
+- Moderate spending score
 
-### Justification
-
-* Highest Accuracy (**63.25%**)
-* Highest Recall (**36.07%**)
-* Highest F1-Score (**52.68%**)
-* Very high Precision (**97.64%**)
-
-Considering all evaluation metrics together, Logistic Regression provides the best balance between identifying churning customers and minimizing incorrect predictions.
+**Business Strategy**
+- Improve customer retention through loyalty programs.
+- Recommend products suitable for mature customers.
 
 ---
 
-# Key Observations
+## Cluster 1 – High Income, Low Spending Customers
 
-* Logistic Regression outperformed Decision Tree and Random Forest on this dataset.
-* All three models achieved very high precision, indicating that predicted churn cases were usually correct.
-* Recall values were comparatively lower, suggesting that several actual churn cases were not detected.
-* The dataset may contain class imbalance, which can affect recall performance.
-* Customer behavior, subscription details, and payment history appear to be useful predictors of churn.
+**Characteristics**
+- High annual income
+- Low spending score
 
----
-
-# Business Recommendations
-
-* Identify customers with a high probability of churning and engage them proactively.
-* Offer personalized discounts or loyalty rewards to high-risk customers.
-* Improve customer support for users with frequent support requests.
-* Monitor customers with long payment delays and high usage patterns.
-* Continuously retrain the model using newly collected customer data to improve prediction performance.
+**Business Strategy**
+- Encourage purchases using personalized offers.
+- Promote premium products and exclusive memberships.
 
 ---
 
-# Future Improvements
+## Cluster 2 – Young Male High Spenders
 
-* Perform hyperparameter tuning using GridSearchCV or RandomizedSearchCV.
-* Handle class imbalance using techniques such as SMOTE or class-weighted models.
-* Explore advanced ensemble algorithms such as XGBoost, LightGBM, or CatBoost.
-* Apply feature engineering to create more informative variables.
-* Deploy the trained model as a web application for real-time customer churn prediction.
+**Characteristics**
+- Mostly male customers
+- Young age group
+- High spending score
 
----
-
-# Technologies Used
-
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Scikit-learn
-* Google Colab
+**Business Strategy**
+- Promote trendy products.
+- Use digital marketing campaigns and seasonal offers.
 
 ---
 
+## Cluster 3 – Young Female High Spenders
+
+**Characteristics**
+- Mostly female customers
+- Young age group
+- High spending score
+
+**Business Strategy**
+- Advertise fashion and lifestyle products.
+- Introduce loyalty programs and personalized recommendations.
+
+---
+
+# 📈 Results
+
+- Successfully identified **4 customer segments** using K-Means Clustering.
+- Used PCA to visualize customer clusters in two dimensions.
+- PCA Explained Variance Ratio: **[0.33690046 0.26230645]**
+- Total Explained Variance: **0.5992069019819846**
+
+---
+
+# 💡 Key Observations
+
+- Customers can be grouped into distinct segments based on age, annual income, and spending behavior.
+- High-income customers do not always spend more.
+- Young customers generally exhibit higher spending behavior.
+- Customer segmentation helps businesses design personalized marketing strategies and improve customer engagement.
+
+---
+
+# ✅ Conclusion
+
+This project successfully demonstrated the use of **Unsupervised Machine Learning** for customer segmentation using **K-Means Clustering**.
+
+The Elbow Method helped determine the optimal number of clusters, while PCA provided an effective two-dimensional visualization of customer groups.
+
+The identified customer segments can help businesses:
+- Improve targeted marketing.
+- Enhance customer satisfaction.
+- Increase customer retention.
+- Optimize promotional strategies based on customer behavior.
+
+---
+
+## 📷 Output
+
+The notebook includes:
+- Data preprocessing
+- Elbow Method graph
+- K-Means clustering
+- Cluster profiling
+- PCA visualization
+- Business insights
+
+---
+
+
+## ⭐ Assignment
+
+**Epochs '26 – Assignment 7**
+
+**Topic:** Customer Segmentation using K-Means Clustering and PCA
 # Conclusion
 
 This project demonstrates the complete machine learning workflow for customer churn prediction, including data preprocessing, feature encoding, model development, evaluation, and comparison. Among the evaluated models, **Logistic Regression** achieved the best overall performance and was selected as the final model. Such predictive models can help organizations identify customers at risk of leaving and support data-driven customer retention strategies.
