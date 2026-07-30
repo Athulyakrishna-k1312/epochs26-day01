@@ -166,7 +166,7 @@ Feature importance analysis revealed that **Support Calls, Age, Contract Length,
 * Google Colab
 
 ---
-
+```
 # Conclusion
 
 This project demonstrates the complete machine learning workflow for customer churn prediction, including data preprocessing, feature encoding, model development, evaluation, and comparison. Among the evaluated models, **Logistic Regression** achieved the best overall performance and was selected as the final model. Such predictive models can help organizations identify customers at risk of leaving and support data-driven customer retention strategies.
