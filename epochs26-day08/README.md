@@ -156,18 +156,4 @@ This project successfully developed a customer churn prediction model using the 
 
 Feature importance analysis revealed that **Support Calls, Age, Contract Length, Total Spend, and Payment Delay** are the most influential factors affecting customer churn. These insights can help organizations identify at-risk customers and implement targeted retention strategies.
 
-```
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Scikit-learn
-* Google Colab
-
----
-```
-# Conclusion
-
-This project demonstrates the complete machine learning workflow for customer churn prediction, including data preprocessing, feature encoding, model development, evaluation, and comparison. Among the evaluated models, **Logistic Regression** achieved the best overall performance and was selected as the final model. Such predictive models can help organizations identify customers at risk of leaving and support data-driven customer retention strategies.
 
